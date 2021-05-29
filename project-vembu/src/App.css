@@ -1,7 +1,6 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -112,19 +111,31 @@
 }
 
 .welcome {
-  height: 450px;
+  height: 350px;
   width: 60%;
   margin-top: 150px;
   display: flex;
   flex-direction: column;
   vertical-align: middle;
-  /* justify-content: space-between; */
 }
 
 .welcome h1 {
-  font-size: 60px;
+  font-size: 50px;
 }
 
 .welcome h2 {
   font-size: 40px;
+}
+
+.btn {
+  border-radius: 20px;
+}
+
+body {
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  background-color: #f7f8fc;
+  color: #333;
+  font-weight: 400;
+  letter-spacing: 0.01rem;
+  line-height: 1.5;
 }

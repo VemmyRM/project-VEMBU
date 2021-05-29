@@ -44,6 +44,8 @@ const Edit = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         updateSchoolData();
+        setRedirect("/browse");
+
     }
 
     //if the redirect state variable is not empty, redirect to that url
