@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+//navbar component to render at the top of every page
 const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">

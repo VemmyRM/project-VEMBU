@@ -3,17 +3,21 @@ import Navbar from "./Navbar";
 import { db, storage } from "../Firebase/index";
 import { Redirect } from "react-router-dom";
 
+//Component for editing existing entries
 const Edit = (props) => {
 
+    //state variables for each field
     const [name, setName] = useState("");
     const [about, setAbout] = useState("");
     const [location, setLocation] = useState("");
     const [admissions, setAdmissions] = useState("");
     const [image, setImage] = useState(null);
+
+    //state variable to hold a redirectURL
     const [redirect, setRedirect] = useState();
-    const [url, setUrl] = useState("");
 
 
+    //function to fetch data from firestore by id (from the route parameters) and store them in the state
     const fetchData = () => {
         db.collection("schools").doc(`${props.match.params.id}`).get().then((doc) => {
             if (doc.exists) {
@@ -22,12 +26,6 @@ const Edit = (props) => {
                 setAbout(doc.data().about);
                 setLocation(doc.data().location);
                 setAdmissions(doc.data().admissions);
-                storage.ref(`images/${props.match.params.id}`).getDownloadURL().then((url) => {
-                    setUrl(url);
-
-                })
-                console.log("fetched!");
-                console.log(doc);
             } else {
                 console.log("No such document!");
             }
@@ -36,38 +34,46 @@ const Edit = (props) => {
         });
     }
 
+    //run once during component mounting or on reload
     useEffect(() => {
+        //fetches data from the firestore database
         fetchData();
     }, []);
 
+    //on form submit, prevent default form submission behaviour and upadate the database
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(name);
         updateSchoolData();
     }
 
+    //if the redirect state variable is not empty, redirect to that url
+    //will check on every render of the component
     if (redirect) {
         return <Redirect to={redirect} />;
     }
 
+    //function to update the firestore database
     const updateSchoolData = () => {
+        //updates the document with the matching id 
         db.collection("schools").doc(`${props.match.params.id}`).update({
             name: name,
             about: about,
             admissions: admissions,
             location: location
         })
-            .then((id) => {
+            .then(() => {
+                //if update is successful, upload the updated image to cloud storage
                 console.log("Document successfully updated!");
-                handleFileUpload(id);
-                setRedirect("/browse");
+                handleFileUpload(`${props.match.params.id}`);
             })
             .catch((error) => {
-                // The document probably doesn't exist.
+                // The document probably doesn't exist
                 console.error("Error updating document: ", error);
             });
 
     }
+
+    //function to set the state variable when a file is added/changed to the input field
     const handleFileAdd = (event) => {
         if (event.target.files[0]) {
             //saving the file to the state
@@ -76,9 +82,10 @@ const Edit = (props) => {
         console.log("File added!");
     };
 
+    //function to upload the image to the database under a specific id if the image was changed
     const handleFileUpload = (id) => {
-        //upload image is image not null
-        if (!image) {
+        //upload image if image exists
+        if (image) {
             storage
                 .ref(`images/${id}`)
                 .put(image)
@@ -90,6 +97,7 @@ const Edit = (props) => {
                     },
                     () => {
                         console.log("success!");
+                        setRedirect("/browse");
                     }
                 );
         }

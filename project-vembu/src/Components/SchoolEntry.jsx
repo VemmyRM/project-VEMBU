@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 import { storage, db } from "../Firebase/index";
 import { Link } from "react-router-dom";
 
+//component to display one single school entry
 const SchoolEntry = ({ id, name, about, location, admissions }) => {
 
+    //state variable to store the image url
     const [url, setUrl] = useState();
+
+    //on component mount, fetch image url from cloud storage based on school id
     useEffect(() => {
         storage.ref(`images/${id}`).getDownloadURL().then((url) => {
             setUrl(url);
@@ -13,7 +17,7 @@ const SchoolEntry = ({ id, name, about, location, admissions }) => {
     })
 
     return (
-        <div className="col-12">
+        <div className="w-50">
             <div className="card mb-5" >
                 <img src={url} className="card-img-top" />
                 <div className="card-body">

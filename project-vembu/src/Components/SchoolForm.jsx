@@ -3,27 +3,35 @@ import { Redirect } from "react-router-dom";
 import { storage, db } from "../Firebase/index";
 import Navbar from "./Navbar";
 
+
+//component to display a form to create a new school
 const SchoolForm = () => {
 
+    //state variables to store the value of each field
     const [name, setName] = useState("");
     const [about, setAbout] = useState("");
     const [location, setLocation] = useState("");
     const [admissions, setAdmissions] = useState("");
     const [image, setImage] = useState(null);
+
+    //state variable to hold to redirect url
     const [redirect, setRedirect] = useState();
 
 
+    //if the redirect is not empty, redirect to that route
+    //will check this on every re-render of the component
     if (redirect) {
         return <Redirect to={redirect} />;
     }
 
 
+    //on form submit, prevent defualt submit behaviour and upload the data to the firestore
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(name);
         uploadSchoolData();
     }
 
+    //function to upload form data to the firestore
     const uploadSchoolData = () => {
         db.collection("schools").add({
             name: name,
@@ -46,6 +54,8 @@ const SchoolForm = () => {
             });
 
     }
+
+    //function to handle adding a new file to the file input
     const handleFileAdd = (event) => {
         if (event.target.files[0]) {
             //saving the file to the state
@@ -54,6 +64,7 @@ const SchoolForm = () => {
         console.log("File added!");
     };
 
+    //fuction to handle uploading a file to the cloud db
     const handleFileUpload = (id) => {
         //upload image is image not null
         storage

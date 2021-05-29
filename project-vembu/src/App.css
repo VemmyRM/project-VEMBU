@@ -37,26 +37,23 @@
   }
 }
 
+/* Custom styles */
+
 .card {
-  min-height: 600px;
+  min-height: 500px;
 }
 
 .navbar {
-  margin-bottom: 100px;
-  height: 150px;
-  font-size: 30px;
-  padding-left: 300px;
-  padding-right: 300px;
+  margin-bottom: 50px;
+  font-size: 15px;
+  padding-left: 100px;
+  padding-right: 100px;
   background: rgb(213, 146, 224);
   background: linear-gradient(
     68deg,
     rgba(213, 146, 224, 1) 0%,
     rgba(151, 240, 240, 1) 100%
   );
-}
-
-.nav-item {
-  padding-left: 50px;
 }
 
 .navbar-brand {
@@ -74,7 +71,7 @@
 }
 
 .card-title {
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .edit-btn {
@@ -89,6 +86,7 @@
 }
 .form-btn {
   width: 150px;
+  margin-bottom: 20px;
   background: rgb(178, 38, 201);
   background: linear-gradient(
     68deg,
@@ -99,9 +97,10 @@
 }
 
 .home-btn {
-  width: 350px;
-  height: 60px;
+  width: 250px;
+  height: 50px;
   margin: 10px;
+  margin-top: 50px;
   vertical-align: middle;
   background: rgb(178, 38, 201);
   background: linear-gradient(
@@ -115,16 +114,17 @@
 .welcome {
   height: 450px;
   width: 60%;
-  margin-top: 300px;
+  margin-top: 150px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  vertical-align: middle;
+  /* justify-content: space-between; */
 }
 
 .welcome h1 {
-  font-size: 80px;
+  font-size: 60px;
 }
 
 .welcome h2 {
-  font-size: 60px;
+  font-size: 40px;
 }

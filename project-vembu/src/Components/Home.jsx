@@ -1,8 +1,8 @@
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 
+//homepage components with links to create or browse schools 
 const homePage = () => {
-    console.log(process.env.REACT_APP_WORDS);
     return (
         <div>
             <Navbar />

@@ -5,6 +5,7 @@ import SchoolForm from "./Components/SchoolForm";
 import Home from "./Components/Home";
 import Edit from "./Components/Edit";
 
+//using react-router-dom to set up routing
 function App() {
   return (
     <BrowserRouter>
