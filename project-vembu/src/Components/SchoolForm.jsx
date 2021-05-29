@@ -47,7 +47,6 @@ const SchoolForm = () => {
                 setLocation("");
                 setAdmissions("");
                 setImage(null);
-                setRedirect("/browse");
             })
             .catch((error) => {
                 console.error("Error adding document: ", error);
@@ -78,6 +77,7 @@ const SchoolForm = () => {
                 },
                 () => {
                     console.log("success!");
+                    setRedirect("/browse");
                 }
             );
     };
