@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 //navbar component to render at the top of every page
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">SchoolFinder</Link>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">

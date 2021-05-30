@@ -31,11 +31,9 @@ const SchoolList = (props) => {
             <Navbar />
             <div className="container">
                 <div className="row">
-                    <center>
-                        {schools.map((school) => {
-                            return <SchoolEntry id={school.id} name={school.name} about={school.about} location={school.location} admissions={school.admissions} />
-                        })}
-                    </center>
+                    {schools.map((school) => {
+                        return <SchoolEntry id={school.id} name={school.name} about={school.about} location={school.location} admissions={school.admissions} />
+                    })}
                 </div>
             </div>
         </div>

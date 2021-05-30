@@ -107,7 +107,7 @@ const SchoolForm = () => {
                         <textarea className="form-control form-control-lg" id="admissions" onChange={(e) => setAdmissions(e.target.value)} value={admissions} ></textarea>
                     </div>
                     <div className="mb-5">
-                        <label htmlFor="formFileLg" className="form-label">Please upload an image</label>
+                        <label htmlFor="formFileLg" className="form-label">Please upload an image (gif, jpeg, jpg, png)</label>
                         <input className="form-control form-control-lg" id="formFileLg" type="file" onChange={handleFileAdd} />
                     </div>
                     <button onClick={handleSubmit} className="btn btn-primary btn-lg mt-3 form-btn">Submit</button>
